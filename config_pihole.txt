@@ -1,4 +1,9 @@
 #! /bin/bash
+
+#> NOTA: Todas las IP's y puertos genericos de este fichero, han sido cambiados en el sistema definitivo. 
+#> Consiguientemente, este fichero es un listado de los pasos de configuracion y hardening para Pi-hole tanto a nivel de sistema como a nivel de red. 
+#> 01/10/2021 - Sr.P
+
 #Instalar PiHole
 Install Pi-Hole - sudo curl -sSL https://install.pi-hole.net
 pihole -a -p [pass]
@@ -89,3 +94,5 @@ dig pi-hole.net @127.0.0.1 -p 5335
 
 #Eliminacion de unbound. 
 sudo apt remove unbound
+
+#> MONTAR CERTIFICADOS CON XCA PARA HABILITAR SSL/TLS. 
