@@ -39,6 +39,12 @@ ls | grep 'file'
 cd /etc/pihole; ls | grep 'scam'
 find [nombre_fich_completo] 
 
+#Exportacion de mis Blacklists
+sudo cd /etc/pihole
+ls * > mislistas
+ls | grep 'mislistas' | cat 
+cp mislistas ~ #Las copiamos al directorio de usuario /home
+
 #Installar ufw
 apt-get install ufw
 
