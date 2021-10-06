@@ -23,13 +23,13 @@ cd /etc/pihole
 mkdir ~/.listas && chmod 700 ~/.listas
 
 #Envio desde PowerShell un Addlist a PiHole. 
-scp -P 22 $env:USERPROFILE\Desktop\tiktok1.txt pi@192.168.1.X:~/.listas
+scp -P 22 $env:USERPROFILE\Desktop\file.txt pi@192.168.1.X:~/.listas
 
 #Copiamos las listas subidas por SCP al directorio de Addlist. 
 sudo cp ~/.listas/* /etc/pihole/ && echo OK || echo 'falla el cp' 
 
 #Buscamos la lista copiada en /etc/pihole:
-ls | grep 'tik' 
+ls | grep 'file' 
 cd /etc/pihole; ls | grep 'scam'
 find [nombre_fich_completo] 
 
