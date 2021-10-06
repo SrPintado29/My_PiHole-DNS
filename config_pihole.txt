@@ -1,0 +1,91 @@
+#! /bin/bash
+#Instalar PiHole
+Install Pi-Hole - sudo curl -sSL https://install.pi-hole.net
+pihole -a -p [pass]
+
+#Actualizaciones de PiHole: 
+pihole -up
+#Comando remoto. Actualizacion automatica.
+ssh pi@192.168.1.X "pihole -up"
+
+#Cambiar configuracion de las opciones de las raspi (ssh, vnc...)
+sudo raspi-config 
+
+#Instalacion de Git en Raspbian
+sudo apt-get uddate
+sudo apt-get install git 
+git --version
+
+#PiHole directorio de configuracion para Blacklist's
+cd /etc/pihole
+
+#Creacion de directorio oculto, para copiar por SCP las Addlist .txt que queramos subir a PiHole: 
+mkdir ~/.listas && chmod 700 ~/.listas
+
+#Envio desde PowerShell un Addlist a PiHole. 
+scp -P 22 $env:USERPROFILE\Desktop\tiktok1.txt pi@192.168.1.X:~/.listas
+
+#Copiamos las listas subidas por SCP al directorio de Addlist. 
+sudo cp ~/.listas/* /etc/pihole/ && echo OK || echo 'falla el cp' 
+
+#Buscamos la lista copiada en /etc/pihole:
+ls | grep 'tik' 
+cd /etc/pihole; ls | grep 'scam'
+find [nombre_fich_completo] 
+
+#Installar ufw
+apt-get install ufw
+
+#Comprobar estado y on/off
+sudo ufw status 
+sudo ufw enable
+sudo ufw disable
+
+#Reboot ufw 
+sudo ufw reload
+ 
+#Puertos/servicios raspi 
+sudo ss -tupln 
+
+#Resumen de puertos PiHole. 
+22/-: SSH (hardening)
+80/tcp: conexiones http en pihole
+53/tcp: DNS 
+53/udp:	DNS 
+5335: servicio unbound + cachedo dns local (recursivo)
+4711: FTL-DNS (api engine/interfaz) 
+
+#Listar reglas ufw 
+sudo ufw status numbered 
+
+#Reglas ufw 
+sudo ufw allow 40/tcp
+sudo ufw delete 4 
+
+#Capamos paquetes ICMP. (ACL)
+sudo nano /etc/ufw/before.rules
+#ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP 
+
+#No debe dar ping al pihole. 
+ping [IP] -3t 
+
+#Comando PowerShell. Limpiar registro de cache dns:
+ipconfig /flushdns 
+
+#Instalacion de unbound (dns-cache recursivo): 
+sudo apt install unbound
+
+#Crear archivo config de unbound
+sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf
+#Reboot service 
+sudo service unbound restart
+
+Off-Forwarding DNS/ marcar custom dns / Redirigimos trafico a nuestro dns cache:
+127.0.0.1#5335
+
+#Comprobamos que funciona usando dig: 
+dig pi-hole.net @127.0.0.1 -p 5335
+
+#Eliminacion de unbound. 
+sudo apt remove unbound
