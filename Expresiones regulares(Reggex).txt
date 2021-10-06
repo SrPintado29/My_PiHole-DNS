@@ -1,10 +1,11 @@
+#! /bin/bash
+#> 01/10/2021 - Sr.P
 #>Recopilación de expresiones regulares para Blacklists en Pi-Hole. 
 
 #> NOTA: estas expresiones regulares son muy restrictivas en cuanto a capado de dns en tu red. Se recomienda examinarlas detenidamente para corroborar que no interfiere con la #> navegacion convencional de los hosts vinculados a Pi-hole. 
 
 #>¿Donde añadir en Pi-hole interface?
 #Blacklists --> RegEx Filter --> "to be added" 
-
 
 
 (^r[[:digit:]]+(.|-+)[[:alnum:]]+-+[[:alnum:]]+-+[[:alnum:]]+.)(googlevideo|gvt1).com$
