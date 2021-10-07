@@ -1,7 +1,7 @@
 #! /bin/bash
 #> 01/10/2021 - Sr.P
 
-#> NOTA: Por seguridad, todas las IP's y puertos genéricos de este fichero, han sido cambiados en el sistema final. 
+#> NOTA: Por seguridad, todas las IP's y puertos en este fichero, han sido cambiados en el sistema final. 
 #> Consiguientemente, este fichero es un listado de los pasos de configuracion y hardening para Pi-hole tanto a nivel de sistema como a nivel de red. 
 
 
