@@ -41,11 +41,17 @@ ls | grep 'file'
 cd /etc/pihole; ls | grep 'scam'
 find [nombre_fich_completo] 
 
-#Exportacion de mis Blacklists
-sudo cd /etc/pihole
+#Exportacion de mis Blacklists:
+sudo su
+cd /etc/pihole
 ls * > mislistas
 ls | grep 'mislistas' | cat 
-cp mislistas ~ #Las copiamos al directorio de usuario /home
+
+cp mislistas ~ #La copiamos al directorio de usuario /root (no acceso desde usuario sin root). 
+cp mislistas /home/pi #La copiamos al directorio pricipal sin permisos de root, para enviarla por scp. 
+exit 
+#Una vez fuera de root y copiadas las listas al ~ (/home/pi), usamos scp para transferir el archivo a Windows: 
+scp -P 717 pi@192.168.1.X:~/mislistas $env:USERPROFILE\Desktop
 
 #Installar ufw
 apt-get install ufw
