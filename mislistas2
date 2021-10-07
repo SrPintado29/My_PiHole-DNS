@@ -1,7 +1,7 @@
 #! /bin/bash
 #> 01/10/2021 - Sr.P
 #>Recopilación de Blacklists para Pi-Hole. 
- 
+
 list.100.raw.githubusercontent.com.domains
 list.102.raw.githubusercontent.com.domains
 list.103.raw.githubusercontent.com.domains
