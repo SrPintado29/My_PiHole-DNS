@@ -4,6 +4,8 @@
 #> NOTA: Por seguridad, todas las IP's y puertos en este fichero, han sido cambiados en el sistema final. 
 #> Consiguientemente, este fichero es un listado de los pasos de configuración y hardening para Pi-hole tanto a nivel de sistema como a nivel de red. 
 
+Obligatoriamente se debe de colocar una dirección IP estática (no dhcp) a todos los dispositivos que quieran ser enrutados al proxy Pi Hole. 
+Esto se debe de cambiar en la configuración interna de tu router FTTH. 
 
 #Instalar PiHole
 Install Pi-Hole - sudo curl -sSL https://install.pi-hole.net
