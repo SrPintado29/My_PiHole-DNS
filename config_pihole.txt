@@ -50,6 +50,7 @@ ls | grep 'mislistas' | cat
 cp mislistas ~ #La copiamos al directorio de usuario /root (no acceso desde usuario sin root). 
 cp mislistas /home/pi #La copiamos al directorio pricipal sin permisos de root, para enviarla por scp. 
 exit 
+sed '/.sha1/d' mislistas #Eliminamos las listas del fichero mislistas que contengan .sha1 
 #Una vez fuera de root y copiadas las listas al ~ (/home/pi), usamos scp para transferir el archivo a Windows: 
 scp -P 717 pi@192.168.1.X:~/mislistas $env:USERPROFILE\Desktop
 
