@@ -74,10 +74,11 @@ sudo ufw status numbered
 sudo ufw allow 40/tcp
 sudo ufw delete 4 
 
-#Capamos paquetes ICMP. (ACL)
+#Capamos paquetes ICMP mediante ACL. 
 sudo nano /etc/ufw/before.rules
 #ok icmp codes for INPUT
 -A ufw-before-input -p icmp --icmp-type echo-request -j DROP 
+(Prevenimos ataques como: DoS, desbordamiento de Ping (flooding), desbordamiento de ICMP_ECHO y Smurf)
 
 #No debe dar ping al pihole. 
 ping [IP] -3t 
