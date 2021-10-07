@@ -85,6 +85,7 @@ ping [IP] -3t
 
 #Comando PowerShell. Limpiar registro de cache dns:
 ipconfig /flushdns 
+ipconfig /displaydns #Listado y comprobacion de vaciado.
 
 #Instalacion de unbound (dns-cache recursivo): 
 sudo apt install unbound
