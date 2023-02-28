@@ -14,3 +14,5 @@
   I do this type of proxy routing because my personal router does not allow to change in its options the primary DNS nor the secondary DNS and definitely, I have to change it in each of my devices. This allows me to have more flexibility in selecting which host I want to route to my proxy network.
 
 Otherwise, you can cofigure your Pi Hole as a recursive dns. This type of dns can be reached through the Unbound service intalled on your Raspbian system. This service allows you to put your Pi Hole as a locally cached dns on your private network, improving your privacy even more but reducing your connection speed.
+
+To launch the network script file, you must give it execution permissions: chmod +x 
