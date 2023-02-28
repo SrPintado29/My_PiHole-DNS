@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Lanzar config inicial para raspi. 
+
+function update_system() {
+  sudo apt-get update
+  sudo apt-get upgrade -y
+}
+
+function configure_network() {
+  sudo echo "auto eth0" >> /etc/network/interfaces
+  sudo echo "iface eth0 inet dhcp" >> /etc/network/interfaces
+  sudo ifdown eth0
+  sudo ifup eth0
+}
+
+function change_password() {
+  read -p "Enter new password: " password
+  echo -e "$password\n$password" | passwd
+}
+
+while true; do
+  echo "Seleccione una opcion:"
+  echo "1. Actualizar el sistema"
+  echo "2. Configurar la red"
+  echo "3. Cambiar la contraseña del usuario"
+  echo "4. Salir"
+
+  read option
+
+  case $option in
+    1)
+      update_system
+      ;;
+    2)
+      configure_network
+      ;;
+    3)
+      change_password
+      ;;
+    4)
+      break
+      ;;
+    *)
+      echo "Opcion no valida"
+      ;;
+  esac
+done
