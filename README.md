@@ -15,4 +15,4 @@
 
 Otherwise, you can cofigure your Pi Hole as a recursive dns. This type of dns can be reached through the Unbound service intalled on your Raspbian system. This service allows you to put your Pi Hole as a locally cached dns on your private network, improving your privacy even more but reducing your connection speed.
 
-To launch the network script file, you must give it execution permissions: chmod +x 
+To launch the network script file, you must give it execution permissions: chmod +x config_network_script
