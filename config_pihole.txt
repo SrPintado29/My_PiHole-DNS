@@ -114,4 +114,20 @@ dig pi-hole.net @127.0.0.1 -p 5335
 #Eliminacion de unbound. 
 sudo apt remove unbound
 
-#> MONTAR CERTIFICADOS CON XCA PARA HABILITAR SSL/TLS. 
+# Recopilacion de comandos útiles de Pi-hole, haciendo uso de su propio comando: 
+
+pihole -g: Este comando actualiza las listas de bloqueo de Pi-hole. Es importante ejecutar este comando regularmente para asegurarse de que Pi-hole esté bloqueando la mayor cantidad posible de anuncios y rastreadores.
+
+pihole -up: Este comando actualiza la versión de Pi-hole a la última versión disponible. Es importante mantener Pi-hole actualizado para corregir errores y agregar nuevas características.
+
+pihole -r: Este comando permite reconfigurar la instalación de Pi-hole, incluyendo la dirección IP y las listas de bloqueo. Útil si necesitas cambiar la configuración de Pi-hole después de la instalación inicial.
+
+pihole -t: Este comando muestra las consultas DNS en tiempo real. Es útil para verificar si Pi-hole está bloqueando correctamente las consultas DNS no deseadas.
+
+pihole status: Este comando muestra el estado actual de Pi-hole, incluyendo si está funcionando correctamente y si las listas de bloqueo están actualizadas.
+
+pihole -w: Este comando permite agregar dominios a la lista blanca de Pi-hole. Si un sitio web legítimo está siendo bloqueado por Pi-hole, puedes agregar el dominio a la lista blanca para permitir el acceso.
+
+pihole -b: Este comando permite agregar dominios a la lista negra de Pi-hole. Si un sitio web legítimo está mostrando anuncios o rastreadores, puedes agregar el dominio a la lista negra para bloquear el acceso.
+
+pihole -d: Este comando permite eliminar dominios de la lista blanca o negra de Pi-hole.
